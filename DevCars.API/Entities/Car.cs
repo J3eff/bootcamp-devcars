@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DevCars.API.Entities
 {
@@ -15,7 +12,6 @@ namespace DevCars.API.Entities
         public decimal Price { get; private set; }
         public string Color { get; private set; }
         public DateTime ProductionDate { get; private set; }
-
         public CarStatusEnum  Status { get; private set; }
         public DateTime RegisteredAt { get; private set; }
 
@@ -30,10 +26,10 @@ namespace DevCars.API.Entities
             Status = CarStatusEnum.Suspended;
         }
 
+        protected Car() { }
 
-        public Car(int id, string vinCode, string brand, string model, int year, decimal price, string color, DateTime productionDate)
-        {
-            Id = id;
+        public Car(string vinCode, string brand, string model, int year, decimal price, string color, DateTime productionDate)
+        {            
             VinCode = vinCode;
             Brand = brand;
             Model = model;
