@@ -1,6 +1,6 @@
 # DevCars - Bootcamp ASP.NET Core
 
-Será desenvolvida uma API REST completa de gerenciamento de vendas de carros.
+Foi desenvolvida uma API REST completa de gerenciamento de vendas de carros.
 
 ## Tecnologias e práticas utilizadas
 
