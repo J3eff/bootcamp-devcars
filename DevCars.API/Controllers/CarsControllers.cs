@@ -29,7 +29,13 @@ namespace DevCars.API.Controllers
         }
 
         //GET api/cars
+        /// <summary>
+        /// Consulta de veiculos disponiveis
+        /// </summary>
+        /// <returns>Não tem retorno.</returns> 
+        /// <response code="200">Consulta realizada com sucesso.</response>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult Get()
         {
             // Retorna lista de CarItemViewModel
@@ -52,7 +58,17 @@ namespace DevCars.API.Controllers
         }
 
         //GET api/cars/2
+        /// <summary>
+        /// Consulta de veiculo
+        /// </summary>
+        /// <param name="id">Identificado de um carro</param>
+        /// <returns>O veiculo especificado</returns>
+        /// <response code="200">Veiculo encontrado.</response>
+        /// <response code="400">Veiculo não encontrado.</response>
+                
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetById(int id)
         {
             // SE CRRO DE INDENTIFICADO ID NÃO EXISTIR, RETORNA NOTFOOUND
@@ -173,7 +189,17 @@ namespace DevCars.API.Controllers
         }
 
         //DELET api/cars/2
+        /// <summary>
+        /// Exclui um veiculo
+        /// </summary>
+        /// <param name="id">Identificado de um carro</param>
+        /// <returns>O veiculo especificado</returns>
+        /// <response code="204">Veiculo encontrado.</response>
+        /// <response code="400">Veiculo não encontrado.</response>        
+        
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Delete(int id)
         {
             //SE NÃO EXISTIR, RETORNA NOT FOUND 404
