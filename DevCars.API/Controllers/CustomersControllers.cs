@@ -2,6 +2,7 @@
 using DevCars.API.InputModels;
 using DevCars.API.Persistence;
 using DevCars.API.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -19,7 +20,23 @@ namespace DevCars.API.Controllers
         }
 
         // api/customers
+        /// <summary>
+        /// Cadastra um cliente
+        /// </summary>
+        /// <remarks>
+        /// Requisição de Exemplo:
+        /// {
+        ///     "fullName": "Jefferson,
+        ///     "document": 47136322851,
+        ///     "birthDate": "1999-03-08T11:00:49.752Z"
+        /// }
+        /// </remarks>
+        /// <returns>Não tem retorno.</returns>
+        /// <response code="204">Cliente cadastrado.</response>
+        /// <response code="500">Parametros incorretos.</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Post([FromBody] AddCustomerInputModel model)
         {
             var customer = new Customer(model.FullName, model.Document, model.BirthDate);
@@ -31,7 +48,30 @@ namespace DevCars.API.Controllers
         }
 
         // api/customers/2/orders
+        /// <summary>
+        /// Cadastra um pedido 
+        /// </summary>
+        /// <remarks>
+        /// Requisição de Exemplo:
+        /// {
+        ///    "idCar": 2,
+        ///    "idCustomer": 1,
+        ///     "extraItems": [
+        ///         {
+        ///          "description": "Teto Solar",
+        ///          "price": 5000
+        ///          }
+        ///        ]
+        ///  }
+        /// </remarks>
+        /// <param name="id"> Identificador de um cliente </param>
+        /// <param name="model"> Identificador de um carro </param>
+        /// <returns>Não tem retorno.</returns>
+        /// <response code="201">Pedido cadastrado</response>
+        /// <response code="500">Parametros incorretos.</response>
         [HttpPost("{id}/orders")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult PostOrder(int id, [FromBody] AddOrderInputModel model)
         {
             var extraItems = model.ExtraItems
@@ -47,7 +87,7 @@ namespace DevCars.API.Controllers
 
             return CreatedAtAction(
                 nameof(GetOrder),
-                new {id = order.IdCustomer, orderid = order.Id },
+                new { id = order.IdCustomer, orderid = order.Id },
                 model
                 );
         }
@@ -70,7 +110,7 @@ namespace DevCars.API.Controllers
                 .Select(e => e.Description)
                 .ToList();
 
-            var orderViewModel = new OrderDetailsViewModel(order.Id, order.IdCustomer, order.TotalCost, extraItems) ;
+            var orderViewModel = new OrderDetailsViewModel(order.Id, order.IdCustomer, order.TotalCost, extraItems);
             return Ok(orderViewModel);
         }
 
