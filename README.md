@@ -4,12 +4,12 @@ Foi desenvolvida uma API REST completa de gerenciamento de vendas de carros.
 
 ## Tecnologias e práticas utilizadas
 
-- ASP.NET Core com .NET 5
-- Entity Framework Core
-- Dapper
-- Swagger
+- <a href="https://docs.microsoft.com/pt-br/dotnet/core/dotnet-five">ASP.NET Core com .NET 5</a>
+- <a href="https://docs.microsoft.com/pt-br/ef/core/">Entity Framework Core</a>
+- <a href="https://github.com/StackExchange/Dapper">Dapper</a>
+- <a href="https://swagger.io/">Swagger </a>
 - Publicação na nuvem
-- Injeção de Dependência
+- <a href="https://docs.microsoft.com/pt-br/dotnet/core/extensions/dependency-injection">Injeção de Dependência</a>
 
 ## Funcionalidades
 
