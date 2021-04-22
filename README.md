@@ -8,7 +8,7 @@ Foi desenvolvida uma API REST completa de gerenciamento de vendas de carros.
 - <a href="https://docs.microsoft.com/pt-br/ef/core/">Entity Framework Core</a>
 - <a href="https://github.com/StackExchange/Dapper">Dapper</a>
 - <a href="https://swagger.io/">Swagger </a>
-- Publicação na nuvem
+- <a href="https://azure.microsoft.com/pt-br/">Publicação na nuvem</a>
 - <a href="https://docs.microsoft.com/pt-br/dotnet/core/extensions/dependency-injection">Injeção de Dependência</a>
 
 ## Funcionalidades
